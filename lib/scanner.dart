@@ -50,11 +50,12 @@ class _ScannerPageState extends State<ScannerPage> {
       key: qrKey,
       onQRViewCreated: _onQRViewCreated,
       overlay: QrScannerOverlayShape(
-          borderColor: Colors.red,
-          borderRadius: 10,
-          borderLength: 30,
-          borderWidth: 10,
-          cutOutSize: scanArea),
+        borderColor: Colors.red,
+        borderRadius: 10,
+        borderLength: 30,
+        borderWidth: 10,
+        cutOutSize: scanArea,
+      ),
     );
   }
 
@@ -94,71 +95,69 @@ class _ScannerPageState extends State<ScannerPage> {
                   Text('Scan complete')
                 else
                   Text('Scan a code'),
-                /* Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.toggleFlash();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getFlashStatus(),
-                              builder: (context, snapshot) {
-                                return Text('Flash: ${snapshot.data}');
-                              },
-                            )),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.flipCamera();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getCameraInfo(),
-                              builder: (context, snapshot) {
-                                if (snapshot.data != null) {
-                                  return Text(
-                                      'Camera facing ${describeEnum(snapshot.data)}');
-                                } else {
-                                  return Text('loading');
-                                }
-                              },
-                            )),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.all(8),
-                        child: ElevatedButton(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.all(8),
+                      child: ElevatedButton(
                           onPressed: () async {
-                            await controller?.pauseCamera();
+                            await controller?.toggleFlash();
+                            setState(() {});
                           },
-                          child:
-                              Text('pause', style: TextStyle(fontSize: 20)),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(8),
-                        child: ElevatedButton(
+                          child: FutureBuilder(
+                            future: controller?.getFlashStatus(),
+                            builder: (context, snapshot) {
+                              return Text('Flash: ${snapshot.data}');
+                            },
+                          )),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(8),
+                      child: ElevatedButton(
                           onPressed: () async {
-                            await controller?.resumeCamera();
+                            await controller?.flipCamera();
+                            setState(() {});
                           },
-                          child:
-                              Text('resume', style: TextStyle(fontSize: 20)),
-                        ),
-                      )
-                    ],
-                  ),*/
+                          child: FutureBuilder(
+                            future: controller?.getCameraInfo(),
+                            builder: (context, snapshot) {
+                              if (snapshot.data != null) {
+                                return Text(
+                                    'Camera facing ${describeEnum(snapshot.data)}');
+                              } else {
+                                return Text('loading');
+                              }
+                            },
+                          )),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.all(8),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          await controller?.pauseCamera();
+                        },
+                        child: Text('pause', style: TextStyle(fontSize: 20)),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(8),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          await controller?.resumeCamera();
+                        },
+                        child: Text('resume', style: TextStyle(fontSize: 20)),
+                      ),
+                    )
+                  ],
+                ),
               ],
             ),
           ],
